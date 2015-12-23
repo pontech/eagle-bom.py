@@ -74,7 +74,7 @@ def get_keys_from_dict_list(elements):
                 keys.append(key)
     return keys
 
-def write_value_list(elements, filename, set_delimiter):
+def write_value_list(elements, filename, set_delimiter, settings):
     """group elements by value if they have the same attributes otherwise
     and write to 'filename' as csv file"""
     elements.sort(key=sort_dict_by_all_but_name)
@@ -95,6 +95,11 @@ def write_value_list(elements, filename, set_delimiter):
             count += 1
         grouped_element['COUNT'] = count
         grouped_elements.append(grouped_element)
+
+    if ('set_quantity' in settings):
+        for group in grouped_elements:
+            group['COUNT'] = group['COUNT'] * int(settings['set_quantity'])
+
     return write_part_list(grouped_elements, filename, set_delimiter)
 
 
@@ -138,6 +143,7 @@ def usage():
     print("\t-h / --help\t\t print this help")
     print("\t-t / --type=\t\t specify the type ('value' or 'part' are valid "\
               "values) of the output csv, default:part")
+    print("\t-q / --quantity=\t\t specify the quantity of boards to be built, default:1")
     print("\t-v / --variant=\t\t specify which variant should be used, "\
               "default is to use the active variant as saved in the board file")
     print("\t--separator=\t\t specify the separator that should be used as "\
@@ -339,7 +345,7 @@ def bom_creation(settings):
     print("writing bom of type " + settings['bom_type'])
     if (settings['bom_type']=='value'):
         write_value_list(elements, settings['out_filename'],
-                         settings['set_delimiter'])
+                         settings['set_delimiter'], settings)
     elif (settings['bom_type']=='part'):
         write_part_list(elements, settings['out_filename'],
                         settings['set_delimiter'])
@@ -353,12 +359,13 @@ def parse_command_line_arguments(argv):
 
     try:                                                                
         opts = getopt.getopt(argv,
-                                   "hc:b:t:s:v:",
+                                   "hc:b:t:s:v:q:",
                                    ["help", "csv=",
                                     "brd=", "sch=",
                                     "type=",
                                     "separator=",
                                     "variant=",
+                                    "quantity=",
                                     "notestpads"])[0]
     except getopt.GetoptError:                     
         usage()                                                    
@@ -380,6 +387,8 @@ def parse_command_line_arguments(argv):
             settings['bom_type'] = arg
         elif opt in ("-v", "--variant"):
             settings['set_variant'] = arg
+        elif opt in ("-q", "--quantity"):
+            settings['set_quantity'] = arg
         elif opt in ("--separator"):
             if (arg == "TAB"):
                 settings['set_delimiter'] = '\t'
