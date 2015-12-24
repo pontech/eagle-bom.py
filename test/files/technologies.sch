@@ -365,7 +365,7 @@
 </attributes>
 <variantdefs>
 <variantdef name="4 PARTS"/>
-<variantdef name="8 PARTS"/>
+<variantdef name="8 PARTS" current="yes"/>
 <variantdef name="8 PARTS ALT"/>
 </variantdefs>
 <classes>

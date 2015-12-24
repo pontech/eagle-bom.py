@@ -146,6 +146,7 @@ def usage():
     print("\t-v / --variant=\t\t specify which variant should be used, "\
               "default is to use the active variant as saved in the board file")
     print("\t-d / --debug=\t\t set the debug level, 0=no debug messages (default:0)")
+    print("\t--varianlist\t\t output list of variants to stdio only, no csv bom will be generated")
     print("\t--separator=\t\t specify the separator that should be used as "\
               "delimiter between each column in the output csv file, use 'TAB'"\
               "to specify tabulator as separator")
@@ -253,13 +254,22 @@ def select_variant(drawing, variant_find_string, settings):
     number_variant = 0   
 
     #find all variants that are in the schematic
+    if( 'variantlist' in settings ):
+        print("VARIANT,CURRENT")
     for elem in drawing.iterfind(variant_find_string):
         number_variant = number_variant + 1
         if (('current' in elem.attrib) and (elem.attrib['current']=="yes")):
             default_variant = elem.attrib['name']
+            variant_current = "TRUE"
+        else:
+            variant_current = "FALSE"
+        if( 'variantlist' in settings ):
+            print(elem.attrib['name'] + "," + variant_current)
         if (elem.attrib['name'] == settings['set_variant']):
             selected_variant = settings['set_variant']
-            
+    if( 'variantlist' in settings ):
+        sys.exit(0)
+
     #find out which variant to use, if there is any
     if (selected_variant == "" and
         default_variant == "" and
@@ -369,6 +379,7 @@ def parse_command_line_arguments(argv):
                                     "variant=",
                                     "quantity=",
                                     "debug=",
+                                    "variantlist",
                                     "notestpads"])[0]
     except getopt.GetoptError:                     
         usage()                                                    
@@ -394,6 +405,8 @@ def parse_command_line_arguments(argv):
             settings['set_quantity'] = arg
         elif opt in ("-d", "--debug"):
             settings['debug_level'] = arg
+        elif opt in ("--variantlist"):
+            settings['variantlist'] = True
         elif opt in ("--separator"):
             if (arg == "TAB"):
                 settings['set_delimiter'] = '\t'
