@@ -119,7 +119,7 @@ def write_part_list(elements, filename, set_delimiter):
     keys.sort()
     all_keys_sorted = fix_position_keys + keys
     elements.sort(key=sort_rows_for_csv)
-    file_pointer = open(filename, 'w')
+    file_pointer = filename and open(filename, 'w') or sys.stdout
     dict_writer = csv.DictWriter(file_pointer, all_keys_sorted, delimiter=set_delimiter,
                                  lineterminator = '\n')
 
@@ -131,8 +131,6 @@ def write_part_list(elements, filename, set_delimiter):
 def usage():
     """print usage messages to the command line"""
     print("usage: ")
-    print("\tmandatory arguments")
-    print("\t-c / --csv=\t\t csv where you want to store the BOM")
     print("\texclusive mandatory arguments (i.e. choose one of the following)")
     print("\t-b / --brd=\t\t eagle board file that you want to use as "\
               "input for the BOM")
@@ -140,6 +138,7 @@ def usage():
               "as input for the BOM")
     print("\t")
     print("\toptional arguments")
+    print("\t-c / --csv=\t\t csv where you want to store the BOM (default:stdio)")
     print("\t-h / --help\t\t print this help")
     print("\t-t / --type=\t\t specify the type ('value' or 'part' are valid "\
               "values) of the output csv, default:part")
@@ -356,6 +355,7 @@ def parse_command_line_arguments(argv):
     """
     settings = {}
     settings['notestpads'] = False
+    settings['out_filename'] = None
 
     try:                                                                
         opts = getopt.getopt(argv,
@@ -411,10 +411,6 @@ def main(argv):
         and 'in_filename_sch' not in settings):
         usage()
         sys.exit(3)
-
-    if ('out_filename' not in settings):
-        usage()
-        sys.exit(4)
 
     if ('bom_type' not in settings):
         print("defaulting to bom type 'part'")
