@@ -145,6 +145,7 @@ def usage():
     print("\t-q / --quantity=\t\t specify the quantity of boards to be built, default:1")
     print("\t-v / --variant=\t\t specify which variant should be used, "\
               "default is to use the active variant as saved in the board file")
+    print("\t-d / --debug=\t\t set the debug level, 0=no debug messages (default:0)")
     print("\t--separator=\t\t specify the separator that should be used as "\
               "delimiter between each column in the output csv file, use 'TAB'"\
               "to specify tabulator as separator")
@@ -269,7 +270,7 @@ def select_variant(drawing, variant_find_string, settings):
         selected_variant = default_variant
 
     if (number_variant > 0):
-        print ("variant: " + selected_variant)
+        debug_print (settings, 1, "variant: " + selected_variant)
 
     return selected_variant
 
@@ -341,7 +342,7 @@ def bom_creation(settings):
             if((settings['notestpads'] == False) or ('TP_SIGNAL_NAME' not in element)):
                 elements.append(element)
 
-    print("writing bom of type " + settings['bom_type'])
+    debug_print(settings, 1, "writing bom of type " + settings['bom_type'])
     if (settings['bom_type']=='value'):
         write_value_list(elements, settings['out_filename'],
                          settings['set_delimiter'], settings)
@@ -356,16 +357,18 @@ def parse_command_line_arguments(argv):
     settings = {}
     settings['notestpads'] = False
     settings['out_filename'] = None
+    settings['debug_level'] = '0'
 
     try:                                                                
         opts = getopt.getopt(argv,
-                                   "hc:b:t:s:v:q:",
+                                   "hc:b:t:s:v:q:d:",
                                    ["help", "csv=",
                                     "brd=", "sch=",
                                     "type=",
                                     "separator=",
                                     "variant=",
                                     "quantity=",
+                                    "debug=",
                                     "notestpads"])[0]
     except getopt.GetoptError:                     
         usage()                                                    
@@ -389,6 +392,8 @@ def parse_command_line_arguments(argv):
             settings['set_variant'] = arg
         elif opt in ("-q", "--quantity"):
             settings['set_quantity'] = arg
+        elif opt in ("-d", "--debug"):
+            settings['debug_level'] = arg
         elif opt in ("--separator"):
             if (arg == "TAB"):
                 settings['set_delimiter'] = '\t'
@@ -397,6 +402,10 @@ def parse_command_line_arguments(argv):
 
     return settings
 
+def debug_print(settings, level, string):
+    if(int(settings['debug_level']) >= level):
+        print(string)
+        
 def main(argv):
     """ main function """
 
@@ -404,8 +413,8 @@ def main(argv):
 
     #check sanity of settings
     if ('set_delimiter' not in settings):
-        print("defaulting to separator \",\"")
         settings['set_delimiter'] = ','
+        debug_print(settings, 1, "defaulting to separator \"" + settings['set_delimiter'] + "\"")
 
     if ('in_filename_brd' not in settings
         and 'in_filename_sch' not in settings):
