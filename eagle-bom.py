@@ -422,7 +422,7 @@ def main(argv):
         sys.exit(3)
 
     if ('bom_type' not in settings):
-        print("defaulting to bom type 'part'")
+        debug_print(settings, 1, "defaulting to bom type 'part'")
         settings['bom_type'] = 'part'
 
     if not 'set_variant' in settings:
