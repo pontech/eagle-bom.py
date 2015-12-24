@@ -364,28 +364,75 @@
 <attributes>
 </attributes>
 <variantdefs>
+<variantdef name="4 PARTS"/>
+<variantdef name="8 PARTS"/>
+<variantdef name="8 PARTS ALT"/>
 </variantdefs>
 <classes>
 <class number="0" name="default" width="0" drill="0">
 </class>
 </classes>
 <parts>
-<part name="R1" library="PLP" deviceset="RES-603" device="0.0OHM" value="0.0%"/>
-<part name="R2" library="PLP" deviceset="RES-603" device="1.0K0.1%" value="1.0K 0.1%"/>
-<part name="R3" library="PLP" deviceset="RES-603" device="1.5K1%" value="1.5K 1%"/>
-<part name="R4" library="PLP" deviceset="RES-603" device="1K1%" value="1K 1%"/>
-<part name="R5" library="PLP" deviceset="RES-603" device="2.4K1%" value="2.4K 1%"/>
-<part name="R6" library="PLP" deviceset="RES-603" device="3.09K1%" value="3.09K 1%"/>
-<part name="R7" library="PLP" deviceset="RES-603" device="3K5%" value="3K"/>
-<part name="R8" library="PLP" deviceset="RES-603" device="7.5K1%" value="7.5K 1%"/>
-<part name="R9" library="PLP" deviceset="RES-603" device="10.0K0.1%" value="10.0K 0.1%"/>
-<part name="R10" library="PLP" deviceset="RES-603" device="10K1%" value="10K 1%"/>
-<part name="R11" library="PLP" deviceset="RES-603" device="12.4K1%" value="12.4K 1%"/>
-<part name="R12" library="PLP" deviceset="RES-603" device="22K1%" value="22K 1%"/>
-<part name="R13" library="PLP" deviceset="RES-603" device="100K1%" value="100K 1%"/>
-<part name="R14" library="PLP" deviceset="RES-603" device="100OHM0.1%" value="100 0.1%"/>
-<part name="R15" library="PLP" deviceset="RES-603" device="137K1%" value="137K 1%"/>
-<part name="R16" library="PLP" deviceset="RES-603" device="200OHM1%" value="200 1%"/>
+<part name="R1" library="PLP" deviceset="RES-603" device="0.0OHM" value="0.0%">
+<variant name="8 PARTS ALT" populate="no"/>
+</part>
+<part name="R2" library="PLP" deviceset="RES-603" device="1.0K0.1%" value="1.0K 0.1%">
+<variant name="4 PARTS" populate="no"/>
+<variant name="8 PARTS" populate="no"/>
+</part>
+<part name="R3" library="PLP" deviceset="RES-603" device="1.5K1%" value="1.5K 1%">
+<variant name="4 PARTS" populate="no"/>
+<variant name="8 PARTS ALT" populate="no"/>
+</part>
+<part name="R4" library="PLP" deviceset="RES-603" device="1K1%" value="1K 1%">
+<variant name="4 PARTS" populate="no"/>
+<variant name="8 PARTS" populate="no"/>
+</part>
+<part name="R5" library="PLP" deviceset="RES-603" device="2.4K1%" value="2.4K 1%">
+<variant name="8 PARTS ALT" populate="no"/>
+</part>
+<part name="R6" library="PLP" deviceset="RES-603" device="3.09K1%" value="3.09K 1%">
+<variant name="4 PARTS" populate="no"/>
+<variant name="8 PARTS" populate="no"/>
+</part>
+<part name="R7" library="PLP" deviceset="RES-603" device="3K5%" value="3K">
+<variant name="4 PARTS" populate="no"/>
+<variant name="8 PARTS ALT" populate="no"/>
+</part>
+<part name="R8" library="PLP" deviceset="RES-603" device="7.5K1%" value="7.5K 1%">
+<variant name="4 PARTS" populate="no"/>
+<variant name="8 PARTS" populate="no"/>
+</part>
+<part name="R9" library="PLP" deviceset="RES-603" device="10.0K0.1%" value="10.0K 0.1%">
+<variant name="8 PARTS ALT" populate="no"/>
+</part>
+<part name="R10" library="PLP" deviceset="RES-603" device="10K1%" value="10K 1%">
+<variant name="4 PARTS" populate="no"/>
+<variant name="8 PARTS" populate="no"/>
+</part>
+<part name="R11" library="PLP" deviceset="RES-603" device="12.4K1%" value="12.4K 1%">
+<variant name="4 PARTS" populate="no"/>
+<variant name="8 PARTS ALT" populate="no"/>
+</part>
+<part name="R12" library="PLP" deviceset="RES-603" device="22K1%" value="22K 1%">
+<variant name="4 PARTS" populate="no"/>
+<variant name="8 PARTS" populate="no"/>
+</part>
+<part name="R13" library="PLP" deviceset="RES-603" device="100K1%" value="100K 1%">
+<variant name="8 PARTS ALT" populate="no"/>
+</part>
+<part name="R14" library="PLP" deviceset="RES-603" device="100OHM0.1%" value="100 0.1%">
+<variant name="4 PARTS" populate="no"/>
+<variant name="8 PARTS" populate="no"/>
+</part>
+<part name="R15" library="PLP" deviceset="RES-603" device="137K1%" value="137K 1%">
+<variant name="4 PARTS" populate="no"/>
+<variant name="8 PARTS ALT" populate="no"/>
+</part>
+<part name="R16" library="PLP" deviceset="RES-603" device="200OHM1%" value="200 1%">
+<variant name="4 PARTS" populate="no"/>
+<variant name="8 PARTS" populate="no"/>
+</part>
 </parts>
 <sheets>
 <sheet>
@@ -396,22 +443,146 @@
 <instance part="R2" gate="U$1" x="10.16" y="71.12"/>
 <instance part="R3" gate="U$1" x="10.16" y="60.96"/>
 <instance part="R4" gate="U$1" x="10.16" y="50.8"/>
-<instance part="R5" gate="U$1" x="10.16" y="40.64"/>
-<instance part="R6" gate="U$1" x="10.16" y="30.48"/>
-<instance part="R7" gate="U$1" x="10.16" y="20.32"/>
-<instance part="R8" gate="U$1" x="30.48" y="81.28"/>
-<instance part="R9" gate="U$1" x="30.48" y="71.12"/>
-<instance part="R10" gate="U$1" x="30.48" y="60.96"/>
-<instance part="R11" gate="U$1" x="30.48" y="50.8"/>
-<instance part="R12" gate="U$1" x="30.48" y="40.64"/>
-<instance part="R13" gate="U$1" x="30.48" y="30.48"/>
-<instance part="R14" gate="U$1" x="30.48" y="20.32"/>
-<instance part="R15" gate="U$1" x="53.34" y="81.28"/>
-<instance part="R16" gate="U$1" x="53.34" y="71.12"/>
+<instance part="R5" gate="U$1" x="35.56" y="81.28"/>
+<instance part="R6" gate="U$1" x="35.56" y="71.12"/>
+<instance part="R7" gate="U$1" x="35.56" y="60.96"/>
+<instance part="R8" gate="U$1" x="35.56" y="50.8"/>
+<instance part="R9" gate="U$1" x="58.42" y="81.28"/>
+<instance part="R10" gate="U$1" x="58.42" y="71.12"/>
+<instance part="R11" gate="U$1" x="58.42" y="60.96"/>
+<instance part="R12" gate="U$1" x="58.42" y="50.8"/>
+<instance part="R13" gate="U$1" x="83.82" y="81.28"/>
+<instance part="R14" gate="U$1" x="83.82" y="71.12"/>
+<instance part="R15" gate="U$1" x="83.82" y="60.96"/>
+<instance part="R16" gate="U$1" x="83.82" y="50.8"/>
 </instances>
 <busses>
 </busses>
 <nets>
+<net name="INPUT" class="0">
+<segment>
+<pinref part="R1" gate="U$1" pin="1"/>
+<wire x1="-12.7" y1="81.28" x2="0" y2="81.28" width="0.1524" layer="91"/>
+<pinref part="R2" gate="U$1" pin="1"/>
+<wire x1="0" y1="81.28" x2="5.08" y2="81.28" width="0.1524" layer="91"/>
+<wire x1="5.08" y1="71.12" x2="0" y2="71.12" width="0.1524" layer="91"/>
+<wire x1="0" y1="71.12" x2="0" y2="81.28" width="0.1524" layer="91"/>
+<junction x="0" y="81.28"/>
+<pinref part="R3" gate="U$1" pin="1"/>
+<wire x1="5.08" y1="60.96" x2="0" y2="60.96" width="0.1524" layer="91"/>
+<wire x1="0" y1="60.96" x2="0" y2="71.12" width="0.1524" layer="91"/>
+<junction x="0" y="71.12"/>
+<pinref part="R4" gate="U$1" pin="1"/>
+<wire x1="5.08" y1="50.8" x2="0" y2="50.8" width="0.1524" layer="91"/>
+<wire x1="0" y1="50.8" x2="0" y2="60.96" width="0.1524" layer="91"/>
+<junction x="0" y="60.96"/>
+<label x="-15.24" y="81.28" size="1.778" layer="95" rot="R180"/>
+</segment>
+</net>
+<net name="N$2" class="0">
+<segment>
+<pinref part="R1" gate="U$1" pin="2"/>
+<pinref part="R5" gate="U$1" pin="1"/>
+<wire x1="15.24" y1="81.28" x2="30.48" y2="81.28" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$3" class="0">
+<segment>
+<pinref part="R2" gate="U$1" pin="2"/>
+<pinref part="R6" gate="U$1" pin="1"/>
+<wire x1="15.24" y1="71.12" x2="30.48" y2="71.12" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$4" class="0">
+<segment>
+<pinref part="R3" gate="U$1" pin="2"/>
+<wire x1="15.24" y1="60.96" x2="30.48" y2="60.96" width="0.1524" layer="91"/>
+<pinref part="R7" gate="U$1" pin="1"/>
+</segment>
+</net>
+<net name="N$5" class="0">
+<segment>
+<pinref part="R4" gate="U$1" pin="2"/>
+<pinref part="R8" gate="U$1" pin="1"/>
+<wire x1="15.24" y1="50.8" x2="30.48" y2="50.8" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$6" class="0">
+<segment>
+<pinref part="R8" gate="U$1" pin="2"/>
+<pinref part="R12" gate="U$1" pin="1"/>
+<wire x1="40.64" y1="50.8" x2="53.34" y2="50.8" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$7" class="0">
+<segment>
+<pinref part="R7" gate="U$1" pin="2"/>
+<pinref part="R11" gate="U$1" pin="1"/>
+<wire x1="40.64" y1="60.96" x2="53.34" y2="60.96" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$8" class="0">
+<segment>
+<pinref part="R6" gate="U$1" pin="2"/>
+<pinref part="R10" gate="U$1" pin="1"/>
+<wire x1="40.64" y1="71.12" x2="53.34" y2="71.12" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$9" class="0">
+<segment>
+<pinref part="R5" gate="U$1" pin="2"/>
+<pinref part="R9" gate="U$1" pin="1"/>
+<wire x1="40.64" y1="81.28" x2="53.34" y2="81.28" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$10" class="0">
+<segment>
+<pinref part="R9" gate="U$1" pin="2"/>
+<pinref part="R13" gate="U$1" pin="1"/>
+<wire x1="63.5" y1="81.28" x2="78.74" y2="81.28" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="OUTPUT" class="0">
+<segment>
+<pinref part="R13" gate="U$1" pin="2"/>
+<wire x1="109.22" y1="81.28" x2="96.52" y2="81.28" width="0.1524" layer="91"/>
+<pinref part="R14" gate="U$1" pin="2"/>
+<wire x1="96.52" y1="81.28" x2="88.9" y2="81.28" width="0.1524" layer="91"/>
+<wire x1="88.9" y1="71.12" x2="96.52" y2="71.12" width="0.1524" layer="91"/>
+<wire x1="96.52" y1="71.12" x2="96.52" y2="81.28" width="0.1524" layer="91"/>
+<junction x="96.52" y="81.28"/>
+<pinref part="R15" gate="U$1" pin="2"/>
+<wire x1="88.9" y1="60.96" x2="96.52" y2="60.96" width="0.1524" layer="91"/>
+<wire x1="96.52" y1="60.96" x2="96.52" y2="71.12" width="0.1524" layer="91"/>
+<junction x="96.52" y="71.12"/>
+<pinref part="R16" gate="U$1" pin="2"/>
+<wire x1="88.9" y1="50.8" x2="96.52" y2="50.8" width="0.1524" layer="91"/>
+<wire x1="96.52" y1="50.8" x2="96.52" y2="60.96" width="0.1524" layer="91"/>
+<junction x="96.52" y="60.96"/>
+<label x="111.76" y="81.28" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="N$12" class="0">
+<segment>
+<pinref part="R14" gate="U$1" pin="1"/>
+<wire x1="63.5" y1="71.12" x2="78.74" y2="71.12" width="0.1524" layer="91"/>
+<pinref part="R10" gate="U$1" pin="2"/>
+</segment>
+</net>
+<net name="N$13" class="0">
+<segment>
+<pinref part="R11" gate="U$1" pin="2"/>
+<wire x1="63.5" y1="60.96" x2="78.74" y2="60.96" width="0.1524" layer="91"/>
+<pinref part="R15" gate="U$1" pin="1"/>
+</segment>
+</net>
+<net name="N$14" class="0">
+<segment>
+<pinref part="R16" gate="U$1" pin="1"/>
+<pinref part="R12" gate="U$1" pin="2"/>
+<wire x1="78.74" y1="50.8" x2="63.5" y2="50.8" width="0.1524" layer="91"/>
+</segment>
+</net>
 </nets>
 </sheet>
 </sheets>
