@@ -194,7 +194,7 @@ def get_device_tree(deviceset_tree, device):
         #print device, device_tree.attrib['name']
         if device_tree.attrib['name'] == device:
             return device_tree
-    return none
+    return None
     
 def get_description(drawing, library, deviceset):
     """get the description of a deviceset from input parameters drawing, library
@@ -218,7 +218,7 @@ def change_part_by_variant(part_tree, part, selected_variant):
 
     if 'populate' in part_tree.attrib and part_tree.attrib['populate'] == "no":
         part['DO_NOT_PLACE'] = "yes"
-    return
+        return
 
     for variant in part_tree.iterfind('variant'):
         if (variant.attrib['name'] == selected_variant):
